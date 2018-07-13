@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
         private string prioridad;
         private string fechaInicio;
         private string fechaFin;
-        private Viaje viaje = new Viaje();
+        
         
 
         public int NumeroPersonas
@@ -68,6 +68,12 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public void confirmarViaje()
+        {
+            Viaje viaje = new Viaje();
+            viaje.asignarChofer(this.NumeroPersonas);
+            viaje.asignarVehiculo(this.NumeroPersonas);
+        }
         
 
     }

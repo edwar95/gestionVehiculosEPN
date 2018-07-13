@@ -79,7 +79,7 @@ namespace WindowsFormsApplication1
             }
             reserva.FechaInicio = fechaIni.Value.ToString("yyyy-MM-dd");
             reserva.FechaFin = fechaFinaliza.Value.ToString("yyyy-MM-dd");
-            reserva.asignarChofer();
+            reserva.confirmarViaje();
               
         }
     }
