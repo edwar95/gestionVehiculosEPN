@@ -129,7 +129,16 @@ namespace WindowsFormsApplication1
                 }
             }
             Console.WriteLine(vehiculo.Placa+vehiculo.Tipo);
-            string lineAux = vehiculo.Tipo+ ";" + vehiculo.Placa+System.Environment.NewLine;
+            string lineAux = vehiculo.Tipo+ ";" + vehiculo.Placa+";";
+            File.AppendAllText(@"reservacion.txt", lineAux);
+        }
+
+        public void asignarFecha(string fechaInicio,string fechaFin)
+        {
+            Fecha fecha = new Fecha();
+            fecha.FechaInicio = fechaInicio;
+            fecha.FechaFin = fechaFin;
+            string lineAux = fecha.FechaInicio+ ";" + fecha.FechaFin+ System.Environment.NewLine;
             File.AppendAllText(@"reservacion.txt", lineAux);
         }
     }

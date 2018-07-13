@@ -1,3 +1,2 @@
 
-David Morales;C;bus;XXX000
-Nombre Apellido;B;auto;HCH199
+David Morales;C;bus;XXX000;2018-02-05;2018-02-05
