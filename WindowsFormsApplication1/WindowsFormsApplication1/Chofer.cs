@@ -10,5 +10,8 @@ namespace WindowsFormsApplication1
     {
         private string nombreChofer;
         private string tipoLicencia;
+
+        public string NombreChofer { get => nombreChofer; set => nombreChofer = value; }
+        public string TipoLicencia { get => tipoLicencia; set => tipoLicencia = value; }
     }
 }

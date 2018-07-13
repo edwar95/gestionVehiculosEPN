@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         Reserva reserva = new Reserva();
+        bool exiteReserva = false;
+        String[] reservaTemp = null;
 
         public Form1()
         {
@@ -31,8 +34,42 @@ namespace WindowsFormsApplication1
 
         private void reservacion_Click(object sender, EventArgs e)
         {
-            reserva.NumeroPersonas = Convert.ToInt32(numPersonas.Value);
-            if (tipoUsr.GetItemText(tipoUsr.SelectedItem) == "Usuario Común")
+            
+
+            foreach (string line in File.ReadLines(@"reservas.txt"))
+            {
+                Char delimiter =';';
+                String[] substrings = line.Split(delimiter);
+                if (numReservaTxt.Text== substrings[0])
+                {
+                    exiteReserva = true;
+                    reservaTemp = substrings;
+                }
+            }
+
+            if (exiteReserva==true)
+            {
+                numPersonas.Value = Int32.Parse(reservaTemp[1]);
+                tipoUsr.Text = reservaTemp[2];
+                fechaIni.Value = Convert.ToDateTime(reservaTemp[3]);
+                fechaFinaliza.Value= Convert.ToDateTime(reservaTemp[3]);
+                
+                
+
+            }
+            else
+            {
+                MessageBox.Show("No existe reserva", "Error Reserva",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                numPersonas.Value = 0;
+            }
+
+        }
+
+        private void confirmarBtn_Click(object sender, EventArgs e)
+        {
+            reserva.NumeroPersonas = Decimal.ToInt32(numPersonas.Value);
+            if (tipoUsr.Text == "Usuario Comun")
             {
                 reserva.Prioridad = "1";
             }
@@ -42,6 +79,8 @@ namespace WindowsFormsApplication1
             }
             reserva.FechaInicio = fechaIni.Value.ToString("yyyy-MM-dd");
             reserva.FechaFin = fechaFinaliza.Value.ToString("yyyy-MM-dd");
+            reserva.asignarChofer();
+              
         }
     }
 }
