@@ -84,7 +84,9 @@ namespace WindowsFormsApplication1
 
                 }
             }
+            string lineAux = chofer.NombreChofer+";"+chofer.TipoLicencia+";";
             Console.WriteLine(chofer.NombreChofer+chofer.TipoLicencia);
+            File.AppendAllText(@"reservacion.txt", lineAux);
         }
 
         public void asignarVehiculo(int NumeroPersonas)
@@ -127,6 +129,8 @@ namespace WindowsFormsApplication1
                 }
             }
             Console.WriteLine(vehiculo.Placa+vehiculo.Tipo);
+            string lineAux = vehiculo.Tipo+ ";" + vehiculo.Placa+System.Environment.NewLine;
+            File.AppendAllText(@"reservacion.txt", lineAux);
         }
     }
 }
