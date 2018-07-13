@@ -4,11 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
     class Viaje
     {
+        Fecha fechaAux = new Fecha();
         private string tipoVehiculo;
         private string chofer;
 
@@ -97,13 +99,12 @@ namespace WindowsFormsApplication1
                     Char delimiter = ';';
                     String[] substrings = line.Split(delimiter);
 
-                    if (substrings[1] == "auto" && cont == 0)
+                    if (substrings[1] == "auto" && cont == 0 )
                     {
                         vehiculo.Tipo = substrings[1];
                         vehiculo.Placa = substrings[0];
                         cont += 1;
                     }
-
                 }
             }
             else if (NumeroPersonas > 5)
@@ -134,15 +135,44 @@ namespace WindowsFormsApplication1
             fecha.FechaInicio = fechaInicio;
             fecha.FechaFin = fechaFin;
 
+            fechaAux = fecha;
             string lineAux = fecha.FechaInicio+ ";" + fecha.FechaFin+ System.Environment.NewLine;
             File.AppendAllText(@"reservacion.txt", lineAux);
+
         }
 
-        private bool verificarDisponibilidadVehiculo()
+        private bool verificarDisponibilidadVehiculo(string fechaInicio, string fechaFin, string placa)
         {
+            bool disponibilidad = false;
+            Char delim_1 = '-';
+
+            string auxIni = fechaInicio;
+            String[] auxIni_ = auxIni.Split(delim_1);
+
+            string auxFin = fechaFin;
+            String[] auxFin_ = auxFin.Split(delim_1);
 
 
-            return false;
+            foreach (string line in File.ReadLines(@"reservacion.txt"))
+            {
+                Char delimiter = ';';
+                String[] substrings = line.Split(delimiter);
+
+                
+                string inicio=substrings[4];
+                String[] subsInicio = inicio.Split(delim_1);
+
+                string fin = substrings[5];
+                String[] subsFin = fin.Split(delim_1);
+
+                if (placa ==substrings[3] && Convert.ToInt32(subsInicio[2]) > Convert.ToInt32(auxIni_[2]))
+                {
+                    disponibilidad = true;
+                }
+                
+            }
+
+            return disponibilidad;
         }
     }
 }

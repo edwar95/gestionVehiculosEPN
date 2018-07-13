@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1
                 numPersonas.Value = Int32.Parse(reservaTemp[1]);
                 tipoUsr.Text = reservaTemp[2];
                 fechaIni.Value = Convert.ToDateTime(reservaTemp[3]);
-                fechaFinaliza.Value= Convert.ToDateTime(reservaTemp[3]);
+                fechaFinaliza.Value= Convert.ToDateTime(reservaTemp[4]);
 
                 confirmarBtn.Enabled = true;
                 reservaAux = reserva;
