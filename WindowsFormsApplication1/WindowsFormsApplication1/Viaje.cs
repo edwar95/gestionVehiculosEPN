@@ -38,11 +38,6 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private bool verificarDisponibilidadVehiculo(){
-
-
-            return false;
-        }
 
         public void asignarChofer(int NumeroPersonas)
         {
@@ -138,8 +133,16 @@ namespace WindowsFormsApplication1
             Fecha fecha = new Fecha();
             fecha.FechaInicio = fechaInicio;
             fecha.FechaFin = fechaFin;
+
             string lineAux = fecha.FechaInicio+ ";" + fecha.FechaFin+ System.Environment.NewLine;
             File.AppendAllText(@"reservacion.txt", lineAux);
+        }
+
+        private bool verificarDisponibilidadVehiculo()
+        {
+
+
+            return false;
         }
     }
 }

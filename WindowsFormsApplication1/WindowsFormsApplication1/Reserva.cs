@@ -74,12 +74,11 @@ namespace WindowsFormsApplication1
             Viaje viaje = new Viaje();
             viaje.asignarChofer(this.NumeroPersonas);
             viaje.asignarVehiculo(this.NumeroPersonas);
-            viaje.asignarFecha(this.FechaInicio, this.FechaInicio);
+            viaje.asignarFecha(this.FechaInicio, this.FechaFin);
 
             Notificacion notificacion = new Notificacion();
             notificacion.NotificacionReserva = "reserva realizada";
-            MessageBox.Show("Reserva realizada", "Notificacion",
-            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Reserva realizada", "Notificacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         
 
