@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
@@ -73,6 +74,11 @@ namespace WindowsFormsApplication1
             Viaje viaje = new Viaje();
             viaje.asignarChofer(this.NumeroPersonas);
             viaje.asignarVehiculo(this.NumeroPersonas);
+
+            Notificacion notificacion = new Notificacion();
+            notificacion.NotificacionReserva = "reserva realizada";
+            MessageBox.Show("Reserva realizada", "Notificacion",
+            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         
 
