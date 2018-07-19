@@ -167,7 +167,7 @@ namespace WindowsFormsApplication1
 
 				if (placa == substrings[3] && Convert.ToInt32(subsInicio[2]) > Convert.ToInt32(auxIni_[2]))
 				{
-					disponibilidad = false;
+					disponibilidad = true;
 				}
 
 			}
